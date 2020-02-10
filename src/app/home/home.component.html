@@ -1,12 +1,12 @@
 <nav>
-    <div class="links">
-        <a href="">
+    <div class="leftNav">
+        <a class="dropLink" href="">
             <span>
                 HOME
             </span>
         </a>
         <div class="dropdown">
-            <a class="dropbtn"href="">            
+            <a class="dropLink" href="">
                 <span>
                     USERS
                 </span>
@@ -16,19 +16,36 @@
               <a href="#">Link 2</a>
               <a href="#">Link 3</a>
             </div>
-          </div>
-        <a href="">            
-            <span>
-                USERS
-            </span>
-        </a>
-        <a href="">
+        </div>
+        <a class="dropLink" href="">
             <span>
                 ADD USERS
             </span>
         </a>
     </div>
-    <div class="account">
-        
+
+    <div class="rightNav">
+        <div class="employeeMenu">
+            <a class="dropLink" (click)="toggleEmployeeMenu()">
+                <span>
+                    <i class="material-icons">person</i>
+                </span>
+            </a>
+            <div class="employeedropdownContent" *ngIf="employeeMenu">
+                <a href="#">image, Name, position</a>
+                <a href="#">
+                    <div class="dropdownEmployee">
+                        <i class="material-icons">settings</i>
+                        <span> Settings</span>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="dropdownEmployee">
+                        <i class="material-icons">directions_run</i>
+                        <span> Log out</span>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 </nav>
