@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>
+    {{pageTitle}}
+    </h1>
+    <div class="tabContainer">
+        <div class="tabSearch">
+            <input type="text" placeholder="Search">
+            <button (click)="toggleImages()">
+                images
+            </button>
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th *ngIf="showImages">Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees">
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.Role}}</td>
+                        <td>{{employee.Email}}</td>
+                        <td>{{employee.Status}}</td>
+                        <td *ngIf="showImages"><img [src]='employee.imageUrl' height="30px" width="30px"></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
