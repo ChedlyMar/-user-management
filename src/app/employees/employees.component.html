@@ -1,15 +1,18 @@
 <div class="container">
     <h1>
     {{pageTitle}}
-    </h1>
+    </h1>    
     <div class="tabContainer">
         <div class="tabSearch">
             <input type="text" placeholder="Search" [(ngModel)]="listFilter">
+            <label >Role: {{role}}</label>
         </div>
+
         <div class="table">
             <div class="msg" *ngIf="!filtredEmployee.length">
                 No matching employee found
             </div>
+            
             <table *ngIf="filtredEmployee.length">
                 <thead>
                     <tr>
@@ -27,7 +30,9 @@
                 <tbody>
                     <tr *ngFor="let employee of filtredEmployee">
                         <td>{{employee.name}}</td>
-                        <td>{{employee.Role}}</td>
+                        <td>
+                            <app-role (changRole)="roleChange($event)" [role]="employee.Role"></app-role>
+                        </td>
                         <td>{{employee.Email}}</td>
                         <td>{{employee.Status}}</td>
                         <td *ngIf="showImages"><img [src]='employee.imageUrl' height="30px" width="30px"></td>

@@ -10,6 +10,7 @@ export class EmployeesComponent implements OnInit {
 
   pageTitle:string="Employees list";
   showImages:boolean=true;
+  role:any;
   
   _listFilter = '';
   get listFilter(): string {
@@ -65,11 +66,18 @@ export class EmployeesComponent implements OnInit {
     employee.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
+  roleChange(e){
+    this.role=e;
+    console.log(this.role);
+    console.log(e);
+  }
+
   toggleImages(){
     this.showImages=!this.showImages;
   }
 
   ngOnInit() {
   }
+
 
 }
