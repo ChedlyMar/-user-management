@@ -4,24 +4,28 @@
     </h1>
     <div class="tabContainer">
         <div class="tabSearch">
-            <input type="text" placeholder="Search">
-            <button (click)="toggleImages()">
-                images
-            </button>
+            <input type="text" placeholder="Search" [(ngModel)]="listFilter">
         </div>
         <div class="table">
-            <table>
+            <div class="msg" *ngIf="!filtredEmployee.length">
+                No matching employee found
+            </div>
+            <table *ngIf="filtredEmployee.length">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Role</th>
                         <th>Email</th>
                         <th>Status</th>
-                        <th *ngIf="showImages">Image</th>
+                        <th >
+                            <button (click)="toggleImages()">
+                                {{showImages ? "Hide " : "Show "}}images
+                            </button>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let employee of employees">
+                    <tr *ngFor="let employee of filtredEmployee">
                         <td>{{employee.name}}</td>
                         <td>{{employee.Role}}</td>
                         <td>{{employee.Email}}</td>

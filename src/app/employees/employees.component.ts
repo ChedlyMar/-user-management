@@ -9,23 +9,21 @@ import { IEmployee } from './employee';
 export class EmployeesComponent implements OnInit {
 
   pageTitle:string="Employees list";
-
   showImages:boolean=true;
   
-
-  filtredEmployees:IEmployee[];
-  _listFilter:string;
-
-
-  get listFilter():string{
+  _listFilter = '';
+  get listFilter(): string {
     return this._listFilter;
   }
-
-  set listFilter(value:string){
-    this._listFilter=value;
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filtredEmployee = this.listFilter ? this.performFilter(this.listFilter) : this.employees;
   }
 
-  employees:IEmployee[]=[
+
+    filtredEmployee:IEmployee[];
+    
+    employees:IEmployee[]=[
     {
       "name": "Dali",
       "Role": ["admin","manager","billing"],
@@ -55,8 +53,17 @@ export class EmployeesComponent implements OnInit {
       "imageUrl":"..\assets\images\dali.png"
     }
   ];
+  
+  constructor() {  
+    this.filtredEmployee = this.employees;
+    this.listFilter="d";
+   }
 
-  constructor() { }
+   performFilter(filterBy: string): IEmployee[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.employees.filter((employee: IEmployee) =>
+    employee.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  }
 
   toggleImages(){
     this.showImages=!this.showImages;
