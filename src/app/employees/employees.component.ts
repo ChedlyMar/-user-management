@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IEmployee } from './employee';
+import { EmployeeService } from './employee.service';
 
 @Component({
   selector: 'app-employees',
@@ -13,8 +14,8 @@ export class EmployeesComponent implements OnInit {
   isAdmin:boolean;
   isManager:boolean;
   isBilling:boolean;
-  role:string[]=[];
-  firstElement:string="hi";
+  //role:string[]=[];
+  //firstElement:string="hi";
   
   _listFilter = '';
   get listFilter(): string {
@@ -28,52 +29,9 @@ export class EmployeesComponent implements OnInit {
 
     filtredEmployee:IEmployee[];
     
-    employees:IEmployee[]=[
-    {
-      "name": "Dali",
-      "Role": ["admin","manager","billing"],
-      "isAdmin":true,
-      "isManager":true,
-      "isBilling":true,
-      "Email":"daly@gmail.com",
-      "Status":"active",
-      "imageUrl":"assets/images/dali.png"
-    },
-    {
-      "name": "Mido",
-      "Role": ["billing"],
-      "isAdmin":false,
-      "isManager":true,
-      "isBilling":false,
-      "Email":"mido@gmail.com",
-      "Status":"invited",
-      "imageUrl":"assets/images/mido.png"
-    },
-    {
-      "name": "Kimo",
-      "Role": ["admin","manager"],
-      "isAdmin":false,
-      "isManager":false,
-      "isBilling":true,
-      "Email":"kimo@gmail.com",
-      "Status":"inactive",
-      "imageUrl":"assets/images/kimo.png"
-    },
-    {
-      "name": "Mimo",
-      "Role": ["manager"],
-      "isAdmin":true,
-      "isManager":false,
-      "isBilling":true,
-      "Email":"mimo@gmail.com",
-      "Status":"active",
-      "imageUrl":"assets/images/mimo.png"
-    }
-  ];
+    employees:IEmployee[]=[];
   
-  constructor() {  
-    this.filtredEmployee = this.employees;
-    this.listFilter="d";
+  constructor(private employeeService:EmployeeService) {
    }
 
    performFilter(filterBy: string): IEmployee[] {
@@ -106,6 +64,8 @@ export class EmployeesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.employees=this.employeeService.getEmployee();
+    this.filtredEmployee = this.employees;
   }
 
 
