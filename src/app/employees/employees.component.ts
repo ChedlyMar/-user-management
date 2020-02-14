@@ -10,7 +10,11 @@ export class EmployeesComponent implements OnInit {
 
   pageTitle:string="Employees list";
   showImages:boolean=true;
-  role:any;
+  isAdmin:boolean;
+  isManager:boolean;
+  isBilling:boolean;
+  role:string[]=[];
+  firstElement:string="hi";
   
   _listFilter = '';
   get listFilter(): string {
@@ -28,30 +32,42 @@ export class EmployeesComponent implements OnInit {
     {
       "name": "Dali",
       "Role": ["admin","manager","billing"],
+      "isAdmin":true,
+      "isManager":true,
+      "isBilling":true,
       "Email":"daly@gmail.com",
       "Status":"active",
-      "imageUrl":"src\assets\dali.png"
+      "imageUrl":"assets/images/dali.png"
     },
     {
       "name": "Mido",
       "Role": ["billing"],
+      "isAdmin":false,
+      "isManager":true,
+      "isBilling":false,
       "Email":"mido@gmail.com",
       "Status":"invited",
-      "imageUrl":"assets\dali"
+      "imageUrl":"assets/images/mido.png"
     },
     {
       "name": "Kimo",
       "Role": ["admin","manager"],
+      "isAdmin":false,
+      "isManager":false,
+      "isBilling":true,
       "Email":"kimo@gmail.com",
       "Status":"inactive",
-      "imageUrl":"..\assets\images\dali.png"
+      "imageUrl":"assets/images/kimo.png"
     },
     {
       "name": "Mimo",
       "Role": ["manager"],
+      "isAdmin":true,
+      "isManager":false,
+      "isBilling":true,
       "Email":"mimo@gmail.com",
       "Status":"active",
-      "imageUrl":"..\assets\images\dali.png"
+      "imageUrl":"assets/images/mimo.png"
     }
   ];
   
@@ -66,9 +82,22 @@ export class EmployeesComponent implements OnInit {
     employee.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
-  roleChange(e){
-    this.role=e;
-    console.log(this.role);
+  isAdminChange(e){
+    this.isAdmin=e;
+    //this.firstElement=this.role[0]+this.role[1]+this.role[2];
+    console.log(this.isAdmin);
+    console.log(e);
+  }
+  isManagerChange(e){
+    this.isManager=e;
+    //this.firstElement=this.role[0]+this.role[1]+this.role[2];
+    console.log(this.isManager);
+    console.log(e);
+  }
+  isBillingChange(e){
+    this.isBilling=e;
+    //this.firstElement=this.role[0]+this.role[1]+this.role[2];
+    console.log(this.isBilling);
     console.log(e);
   }
 

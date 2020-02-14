@@ -5,7 +5,9 @@
     <div class="tabContainer">
         <div class="tabSearch">
             <input type="text" placeholder="Search" [(ngModel)]="listFilter">
-            <label >Role: {{role}}</label>
+            <label >Role: {{isAdmin ? "Admin" : " "}} {{isManager ? " Manager" : " "}} {{isBilling ? " Billing" : " "}}
+
+            </label>
         </div>
 
         <div class="table">
@@ -18,6 +20,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Role</th>
+                        <th>Role description</th>
                         <th>Email</th>
                         <th>Status</th>
                         <th >
@@ -30,12 +33,21 @@
                 <tbody>
                     <tr *ngFor="let employee of filtredEmployee">
                         <td>{{employee.name}}</td>
-                        <td>
+                    
+                    <!--    <td>
                             <app-role (changRole)="roleChange($event)" [role]="employee.Role"></app-role>
+                        </td>
+                    -->
+                        <td>
+                            <app-role [isAdmin]="employee.isAdmin" (changAdmin)="isAdminChange($event)"
+                                        [isManager]="employee.isManager" (changeManager)="isManagerChange($event)"
+                                        [isBilling]="employee.isBilling" (changeBilling)="isBillingChange($event)"></app-role>
                         </td>
                         <td>{{employee.Email}}</td>
                         <td>{{employee.Status}}</td>
-                        <td *ngIf="showImages"><img [src]='employee.imageUrl' height="30px" width="30px"></td>
+                        <td *ngIf="showImages">
+                            <img [src]='employee.imageUrl' height="30px" width="30px">
+                        </td>
                     </tr>
                 </tbody>
                 
