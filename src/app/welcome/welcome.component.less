@@ -1,0 +1,138 @@
+
+@first-backgroundColor:#F2F2F2;
+@second-backgroundColor: #FFFFFF;
+@third-backgroundColor: #F9F9F9;
+
+@fisrtBlack-color:#222222;
+@secondBlack-color:#565656;
+@thirdBlack-color:#000000;
+
+@firstGreen-color:#37a000;
+@secondGreen-color:#008329;
+
+@shadow:0 1px 6px rgba(57,73,76,.35);
+
+.container{
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+h1{
+    line-height: 30px;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0 0 30px;
+    color: @fisrtBlack-color;
+    font-family: inherit;
+    padding-left: 30px;
+}
+
+
+.tabContainer{
+    box-shadow: @shadow;
+}
+.head{
+    display: flex;
+    padding: 30px;
+    background-color: @third-backgroundColor;
+    border-bottom: 1px solid #E0E0E0;
+    line-height: 27px;
+    font-size: 21px;
+    font-weight: 400;
+    word-break: break-word;
+    color: @fisrtBlack-color;
+    input{
+        padding: 10px 48px 10px 20px;
+        border: 1px;
+        border: 1px solid #E0E0E0;
+        border-radius: 2px;
+        color: @fisrtBlack-color;
+        font-size: 13px;
+    }
+    input:hover{
+        outline: none;
+        border-color: @secondGreen-color;
+    }
+    input:focus{
+        outline: none;
+        border-color: @firstGreen-color;
+    }
+
+    
+}
+button{
+    background-color: @firstGreen-color;
+    border:solid 2px transparent;;
+    color:@second-backgroundColor;
+    padding: 11px 28px 11px 28px;
+    font-size: 14px;
+    line-height: 14px;
+    border-radius: 2px;
+    font-weight: 500;
+    cursor: pointer;        
+}
+button:hover{
+    background-color: @secondGreen-color;
+    box-shadow: 0 2px 10px 1px rgba(57,73,76,0.4), 
+    0 1px 2px rgba(57,73,76,0.25);
+}
+.msg{
+    width: 100%;
+    padding: 20px;
+    font-size: 21px;
+    color: @secondBlack-color;
+    text-align: center;
+}
+
+.body{
+    background-color: @second-backgroundColor;
+    padding: 30px 30px 20px 30px;
+    box-shadow: @shadow;   
+}
+table{
+    width: 80%;
+}
+th{
+    padding: 10px;
+    padding-left: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: @fisrtBlack-color;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    text-align: left;
+}
+td{
+    padding: 10px;
+    padding-left: 0;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    font-size: 13px;
+    vertical-align: top;
+    text-align: left;
+}
+tr:hover{
+    background-color: @third-backgroundColor;
+    color: @firstGreen-color;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
