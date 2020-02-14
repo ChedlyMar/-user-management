@@ -1,6 +1,6 @@
 <nav>
     <div class="leftNav">
-        <a class="dropLink" href="">
+        <a class="dropLink" [routerLink]="['welcome']">
             <span>
                 HOME
             </span>
@@ -17,7 +17,7 @@
               <a href="#">Link 3</a>
             </div>
         </div>
-        <a class="dropLink" href="">
+        <a class="dropLink" [routerLink]="['./employees']">
             <span>
                 ADD USERS
             </span>
@@ -49,4 +49,3 @@
         </div>
     </div>
 </nav>
-<app-employees></app-employees>
