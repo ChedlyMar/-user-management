@@ -9,6 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { RoleComponent } from './role/role.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { EmployeeDatailComponent } from './employees/employee-datail.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
     HomeComponent,
     EmployeesComponent,
     RoleComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    EmployeeDatailComponent,
+    AddEmployeeComponent,
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
