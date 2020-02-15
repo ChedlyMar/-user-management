@@ -1,0 +1,28 @@
+
+<div class="container">
+       
+    <div class="tabContainer">
+        <div class="head">
+            <h1>{{pageTitle}}</h1> 
+         </div>
+
+        <div class="body">
+            <div class="labelInput">
+                <label>Email</label>
+                <input class="input" type="text" placeholder="Email here...">   
+            </div>
+            <div class="labelInput">
+                <label>Password</label>
+                <input class="input" type="text" placeholder="Password here...">
+            </div>
+                                          
+        </div>
+        <div class="foot">
+            <a [routerLink]="['../forget-password']">Forget password</a>
+            <button [routerLink]="['../my-profile']">
+                Log In
+            </button>
+        </div>
+    </div>
+
+</div>

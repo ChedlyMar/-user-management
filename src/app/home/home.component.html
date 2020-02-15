@@ -12,12 +12,12 @@
                 </span>
             </a>
             <div class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
+              <a [routerLink]="['employees']">Employee list</a>
+              <a [routerLink]="['add-employee']">Add employee</a>
+              <a [routerLink]="['login']">Login</a>
             </div>
         </div>
-        <a class="dropLink" [routerLink]="['./employees']">
+        <a class="dropLink" [routerLink]="['add-employee']">
             <span>
                 ADD USERS
             </span>

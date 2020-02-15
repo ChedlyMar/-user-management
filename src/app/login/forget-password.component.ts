@@ -1,0 +1,17 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-forget-password',
+  templateUrl: './forget-password.component.html',
+  styleUrls: ['./forget-password.component.less']
+})
+export class ForgetPasswordComponent implements OnInit {
+
+  pageTitle ="Forget password";
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

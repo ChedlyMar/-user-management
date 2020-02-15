@@ -12,6 +12,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { EmployeeDatailComponent } from './employees/employee-datail.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { LoginComponent } from './login/login.component';
+import { ForgetPasswordComponent } from './login/forget-password.component';
+import { ResetPasswordComponent } from './login/reset-password.component';
+import { MyProfileComponent } from './login/my-profile.component';
 
 
 @NgModule({
@@ -24,6 +27,9 @@ import { LoginComponent } from './login/login.component';
     EmployeeDatailComponent,
     AddEmployeeComponent,
     LoginComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent,
+    MyProfileComponent,
 
   ],
   imports: [
