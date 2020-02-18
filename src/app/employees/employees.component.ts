@@ -18,6 +18,7 @@ export class EmployeesComponent implements OnInit {
   //firstElement:string="hi";
   
   _listFilter = '';
+  errorMessage: any;
   get listFilter(): string {
     return this._listFilter;
   }
@@ -27,9 +28,9 @@ export class EmployeesComponent implements OnInit {
   }
 
 
-    filtredEmployee:IEmployee[];
+    filtredEmployee:IEmployee[]=[];
     
-    employees:IEmployee[]=[];
+    employees:IEmployee[];
   
   constructor(private employeeService:EmployeeService) {
    }
@@ -64,9 +65,16 @@ export class EmployeesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.employees=this.employeeService.getEmployee();
-    this.filtredEmployee = this.employees;
+  this.employeeService.getEmployee().subscribe({
+    next: employees => {
+      this.employees = employees;
+      this.filtredEmployee = this.employees;      
+    },
+    error: err => this.errorMessage = err
+  
+  })
   }
+
 
 
 }
