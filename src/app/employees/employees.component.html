@@ -11,33 +11,39 @@
         </div>
 
         <div class="table">
-            <div class="msg" *ngIf="!filtredEmployee.length">
+            <div class="msg" *ngIf="!filtredEmployee.length || !filtredEmployee">
                 No matching employee found
             </div>
             
             <table *ngIf="filtredEmployee.length">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>Role description</th>
-                        <th>Email</th>
-                        <th>Status</th>
                         <th >
                             <button (click)="toggleImages()">
                                 {{showImages ? "Hide " : "Show "}}images
                             </button>
                         </th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let employee of filtredEmployee">
-                        <td>{{employee.name}}</td>
-                    
-                    <!--    <td>
-                            <app-role (changRole)="roleChange($event)" [role]="employee.Role"></app-role>
+                        <td *ngIf="showImages" >
+                            <img [src]='employee.imageUrl' height="30px" width="30px">
                         </td>
-                    -->
+                        <td *ngIf="!showImages" >
+                            <span width="60px"></span>
+                        </td>
+                        <td>
+                            <a [routerLink]="['/employees',employee.id]"
+                               [queryParams]="{filteredBy: listFilter, showImage:showImages}"> 
+                                {{employee.name}}
+                            </a>
+                        </td>                    
                         <td>
                             <app-role [isAdmin]="employee.isAdmin" (changAdmin)="isAdminChange($event)"
                                         [isManager]="employee.isManager" (changeManager)="isManagerChange($event)"
@@ -45,12 +51,15 @@
                         </td>
                         <td>{{employee.Email}}</td>
                         <td>{{employee.Status}}</td>
-                        <td *ngIf="showImages">
-                            <img [src]='employee.imageUrl' height="30px" width="30px">
+                        
+                        <td>
+                            <button [routerLink]="['/employees',employee.id,'edit']"
+                                    [queryParams]="{filteredBy: listFilter, showImage:showImages}">
+                                Edit
+                            </button>
                         </td>
                     </tr>
-                </tbody>
-                
+                </tbody>                
             </table>
         </div>
     </div>

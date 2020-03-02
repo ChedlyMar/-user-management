@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>
+    {{pageTitle}}
+    </h1>    
+    <div class="tabContainer">
+        <div class="head">
+            This is {{name}} detail account
+        </div>
+
+        <div class="body">
+            id:{{id}}<br>
+            Name: {{name}} <br>
+            Email: {{email}}<br>
+            Status:{{status}}<br>
+            
+        </div>
+        <div class="head">
+            <button [routerLink]="['/employees']"
+                queryParamsHandling= "preserve">
+                Back
+            </button>
+            <button [routerLink]="['/employees',id,'edit']">
+                Edit
+            </button>
+        </div>
+    </div>
+
+</div>

@@ -1,4 +1,5 @@
 export interface IEmployee {
+    id:number  
     name: string;
     Role: string[];
     isAdmin:boolean;

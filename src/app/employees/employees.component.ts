@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IEmployee } from './employee';
 import { EmployeeService } from './employee.service';
+import { ActivatedRoute, Params, Data } from '@angular/router';
 
 @Component({
   selector: 'app-employees',
@@ -10,15 +11,13 @@ import { EmployeeService } from './employee.service';
 export class EmployeesComponent implements OnInit {
 
   pageTitle:string="Employees list";
-  showImages:boolean=true;
+  showImages:boolean=false;
   isAdmin:boolean;
   isManager:boolean;
   isBilling:boolean;
-  //role:string[]=[];
-  //firstElement:string="hi";
-  
   _listFilter = '';
   errorMessage: any;
+
   get listFilter(): string {
     return this._listFilter;
   }
@@ -27,13 +26,27 @@ export class EmployeesComponent implements OnInit {
     this.filtredEmployee = this.listFilter ? this.performFilter(this.listFilter) : this.employees;
   }
 
+  filtredEmployee:IEmployee[]=[];
+  employees:IEmployee[]=[];
 
-    filtredEmployee:IEmployee[]=[];
-    
-    employees:IEmployee[];
-  
-  constructor(private employeeService:EmployeeService) {
+  constructor(private employeeService:EmployeeService,
+              private router:ActivatedRoute) {
    }
+   
+  ngOnInit() {
+    this._listFilter=this.router.snapshot.queryParamMap.get("filteredBy")||"";
+    this.showImages=this.router.snapshot.queryParamMap.get("showImage")==="true";
+  
+      this.employeeService.getEmployee().subscribe({
+      next: employees => {
+        this.employees = employees;
+        this.filtredEmployee = this.performFilter(this._listFilter);      
+      },
+      error: err => this.errorMessage = err    
+    })
+
+    
+  }
 
    performFilter(filterBy: string): IEmployee[] {
     filterBy = filterBy.toLocaleLowerCase();
@@ -43,37 +56,18 @@ export class EmployeesComponent implements OnInit {
 
   isAdminChange(e){
     this.isAdmin=e;
-    //this.firstElement=this.role[0]+this.role[1]+this.role[2];
-    console.log(this.isAdmin);
-    console.log(e);
   }
   isManagerChange(e){
     this.isManager=e;
-    //this.firstElement=this.role[0]+this.role[1]+this.role[2];
-    console.log(this.isManager);
-    console.log(e);
   }
   isBillingChange(e){
     this.isBilling=e;
-    //this.firstElement=this.role[0]+this.role[1]+this.role[2];
-    console.log(this.isBilling);
-    console.log(e);
   }
 
   toggleImages(){
     this.showImages=!this.showImages;
   }
 
-  ngOnInit() {
-  this.employeeService.getEmployee().subscribe({
-    next: employees => {
-      this.employees = employees;
-      this.filtredEmployee = this.employees;      
-    },
-    error: err => this.errorMessage = err
-  
-  })
-  }
 
 
 

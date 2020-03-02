@@ -13,12 +13,14 @@ import { EmployeeModule } from './employees/employee.module';
 import { LoginModule } from './login/login.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     WelcomeComponent,
     AddEmployeeComponent,
+    
   ],
   imports: [
     BrowserModule,
