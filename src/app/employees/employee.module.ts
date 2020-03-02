@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EmployeeEditComponent } from './employee-edit.component';
 import { EmployeesData } from './employees-data';
+import { EmployeeResolver } from './employee-resolver.service';
+
 
 
 
@@ -26,8 +28,8 @@ import { EmployeesData } from './employees-data';
       { path : 'employees', component: EmployeesComponent},
       { 
         path : 'employees/:id', 
-        component: EmployeeDatailComponent
-        //resolve:{emp:EmployeeResolver}
+        component: EmployeeDatailComponent,
+        resolve:{resolveEmp:EmployeeResolver}
       },
       { path : 'employees/:id/edit', component: EmployeeEditComponent}      
     ])
